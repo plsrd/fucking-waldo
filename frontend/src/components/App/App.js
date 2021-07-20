@@ -47,7 +47,12 @@ function App() {
   }
 
   const handleSelection = name => {
-    if (!name) { return setModalLocation() }
+    if (!name) { 
+      setModalLocation()
+      setClickCoords()
+      return
+    }
+    
     const character = characterData.find(character => character.name === name)
 
     if (character.found) { return }
@@ -73,21 +78,20 @@ function App() {
 
   return (
     <Container>
-      {levelData.mainImage && 
-        <Image 
-          src={urlFor(levelData.mainImage)}
-          onClick={handleClick}
-        />
+      {
+        levelData.mainImage && 
+          <Image 
+            src={urlFor(levelData.mainImage)}
+            onClick={handleClick}
+          />
       }
       {
-        (modalLocation && characterData) ?
+        modalLocation &&
           <Modal
             position={modalLocation}
             characters={characterData}
             handleSelection={handleSelection}
           />
-          :
-          null
       }
     </Container>
   );
