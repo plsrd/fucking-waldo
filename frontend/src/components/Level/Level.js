@@ -14,7 +14,6 @@ const Level = (number) => {
   const [modalLocation, setModalLocation] = useState()
 
   useEffect(() => {
-  
     sanityClient.fetch(levelQuery, number)
       .then(data => {
         setLevelData({

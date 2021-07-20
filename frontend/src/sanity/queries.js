@@ -8,4 +8,11 @@ export const levelQuery = `
       positionX,
       positionY
     }
-  }[0]`   
+  }[0]`
+
+  export const allLevelsQuery = `
+    *[_type == 'level']{
+      name,
+      mainImage
+    }
+  `
