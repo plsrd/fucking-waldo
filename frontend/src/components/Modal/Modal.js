@@ -7,10 +7,11 @@ const Container = styled.div`
   top: ${({y}) => `${y}px`};
   display: flex;
   flex-direction: column;
-
 `
 
-const Name = styled.button``
+const Name = styled.button`
+  text-decoration: ${props => props.found ? 'line-through' : 'none'}
+`
 
 export const Modal = ({ names, position, handleSelection }) => {
   return (
@@ -19,6 +20,7 @@ export const Modal = ({ names, position, handleSelection }) => {
         <Name 
           key={name}
           onClick={() => handleSelection(name)}
+          found={name.found}
         >
           {name}
         </Name>
