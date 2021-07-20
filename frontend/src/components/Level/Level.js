@@ -7,7 +7,6 @@ import Modal from '../Modal/Modal'
 
 import { Container, Image } from './style'
 
-
 const Level = (number) => {
   const [levelData, setLevelData] = useState({})
   const [characterData, setCharacterData] = useState()
@@ -16,7 +15,7 @@ const Level = (number) => {
 
   useEffect(() => {
   
-    sanityClient.fetch(levelQuery)
+    sanityClient.fetch(levelQuery, number)
       .then(data => {
         setLevelData({
           number: data.number,

@@ -1,5 +1,5 @@
 export const levelQuery = `
-  *[_type == 'level']{
+  *[_type == 'level' && number == $number]{
     number,
     mainImage,
     characters[]{
