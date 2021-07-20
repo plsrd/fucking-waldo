@@ -7,16 +7,21 @@ const Container = styled.div`
   top: ${({y}) => `${y}px`};
   display: flex;
   flex-direction: column;
-  
+
 `
 
 const Name = styled.button``
 
-export const Modal = ({ names, position}) => {
+export const Modal = ({ names, position, handleSelection }) => {
   return (
     <Container x={position.x} y={position.y}>
       {names.map(name => (
-        <Name key={name}>{name}</Name>
+        <Name 
+          key={name}
+          onClick={() => handleSelection(name)}
+        >
+          {name}
+        </Name>
       ))}
     </Container>
   )

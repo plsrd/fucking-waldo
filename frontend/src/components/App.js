@@ -47,7 +47,7 @@ function App() {
   }, [])
 
 
-  const handleClick = (e) => {
+  const handleClick = e => {
     const coords =  {
       x: e.pageX - e.target.offsetLeft,
       y: e.pageY - e.target.offsetTop
@@ -58,6 +58,19 @@ function App() {
       y: e.pageY
     })
   }
+
+  const handleSelection = name => {
+    const { characters } = level
+    const character = characters.find(character => character.name === name)
+    console.log(coords.x >= character.positionX.startX && 
+      coords.x <= character.positionX.endX &&
+      coords.y >= character.positionY.startY && 
+      coords.y <= character.positionY.endY
+    )
+    setModalLocation()
+  }
+
+ 
 
   return (
     <Container>
@@ -72,6 +85,7 @@ function App() {
           <Modal
             position={modalLocation}
             names={level.characters.map(character => character.name)}
+            handleSelection={handleSelection}
           />
           :
           null
