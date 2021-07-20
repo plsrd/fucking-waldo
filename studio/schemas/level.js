@@ -4,6 +4,11 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'number',
+      title: 'Level Number',
+      type: 'number'
+    },
+    {
       name: 'mainImage',
       title: 'Main Image',
       type: 'image'
@@ -16,5 +21,15 @@ export default {
         {type: 'character'}
       ]
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'number'
+    },
+    prepare({ title }) {
+      return {
+        title: `Level ${title}`
+      }
+    }
+  }
 }
