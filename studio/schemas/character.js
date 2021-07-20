@@ -16,12 +16,36 @@ export default {
     {
       name: 'positionX',
       title: 'Position X',
-      type: 'number'
+      type: 'object',
+      fields: [
+        {
+          name: 'startX',
+          title: 'Start X',
+          type: 'number'
+        },
+        {
+          name: 'endX',
+          title: 'End X',
+          type: 'number'
+        }
+      ]
     },
     {
       name: 'positionY',
       title: 'Position Y',
-      type: 'number'
-    }
+      type: 'object',
+      fields: [
+        {
+          name: 'startY',
+          title: 'Start Y',
+          type: 'number'
+        },
+        {
+          name: 'endY',
+          title: 'End Y',
+          type: 'number'
+        }
+      ]
+    },
   ]
 }

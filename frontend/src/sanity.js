@@ -1,4 +1,5 @@
-import sanityClient from "@sanity/client";
+import sanityClient from "@sanity/client"
+
 
 export default sanityClient({
   projectId: "zp6t7zn3",
@@ -6,3 +7,4 @@ export default sanityClient({
   apiVersion: 'v2021-07-20',
   useCdn: true,
 })
+

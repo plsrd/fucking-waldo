@@ -1,13 +1,15 @@
 import React, { useEffect, useState} from 'react'
 import styled from 'styled-components'
-import sanityClient from '../client'
+import sanityClient from '../sanity'
 import imageUrlBuilder from "@sanity/image-url"
 
 import './reset.css'
 
+import Modal from './Modal/Modal'
+
 const builder = imageUrlBuilder(sanityClient);
 
-const urlFor =(source) => {
+export const urlFor = (source) => {
     return builder.image(source);
 }
 
@@ -16,6 +18,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  padding: 50px;
 `
 
 const Image = styled.img`
@@ -23,28 +26,38 @@ const Image = styled.img`
 
 function App() {
   const [level, setLevel] = useState({})
+  const [coords, setCoords] = useState()
+  const [modalLocation, setModalLocation] = useState()
 
   useEffect(() => {
     sanityClient.fetch(
       `*[_type == 'level']{
         number,
         mainImage,
-        characters
+        characters[]{
+          name,
+          previewImage,
+          positionX,
+          positionY
+        }
       }[0]`
     )
       .then(data => setLevel(data))
       .catch(console.error)
   }, [])
 
+
   const handleClick = (e) => {
     const coords =  {
       x: e.pageX - e.target.offsetLeft,
       y: e.pageY - e.target.offsetTop
     }
-    console.log(coords)
+    setCoords(coords)
+    setModalLocation({
+      x: e.pageX,
+      y: e.pageY
+    })
   }
-
-  console.log(level)
 
   return (
     <Container>
@@ -53,6 +66,15 @@ function App() {
           src={urlFor(level.mainImage)}
           onClick={handleClick}
         />
+      }
+      {
+        (modalLocation && level.characters) ?
+          <Modal
+            position={modalLocation}
+            names={level.characters.map(character => character.name)}
+          />
+          :
+          null
       }
     </Container>
   );
