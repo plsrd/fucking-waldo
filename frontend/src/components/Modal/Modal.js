@@ -13,18 +13,25 @@ const Name = styled.button`
   text-decoration: ${props => props.found ? 'line-through' : 'none'}
 `
 
-export const Modal = ({ names, position, handleSelection }) => {
+const Cancel = styled.button``
+
+export const Modal = ({ characters, position, handleSelection }) => {
   return (
     <Container x={position.x} y={position.y}>
-      {names.map(name => (
+      {characters.map(character => (
         <Name 
-          key={name}
-          onClick={() => handleSelection(name)}
-          found={name.found}
+          key={character.name}
+          onClick={() => handleSelection(character.name)}
+          found={character.found}
         >
-          {name}
+          {character.name}
         </Name>
       ))}
+      <Cancel
+        onClick={() => handleSelection()}
+      >
+        Cancel
+      </Cancel>
     </Container>
   )
 }

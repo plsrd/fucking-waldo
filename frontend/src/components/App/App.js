@@ -15,6 +15,7 @@ function App() {
   const [modalLocation, setModalLocation] = useState()
 
   useEffect(() => {
+  
     sanityClient.fetch(levelQuery)
       .then(data => {
         setLevelData({
@@ -28,17 +29,17 @@ function App() {
         setCharacterData(characters)
       })
       .catch(console.error)
-  }, [])
 
-  console.log(levelData)
-  console.log(characterData)
+  }, [])
 
   const handleClick = e => {
     const coords =  {
       x: e.pageX - e.target.offsetLeft,
       y: e.pageY - e.target.offsetTop
     }
+
     setClickCoords(coords)
+
     setModalLocation({
       x: e.pageX,
       y: e.pageY
@@ -46,14 +47,25 @@ function App() {
   }
 
   const handleSelection = name => {
-    const { characters } = levelData
-    const character = characters.find(character => character.name === name)
+    if (!name) { return setModalLocation() }
+    const character = characterData.find(character => character.name === name)
+
+    if (character.found) { return }
+
     if (clickCoords.x >= character.positionX.startX && 
       clickCoords.x <= character.positionX.endX &&
       clickCoords.y >= character.positionY.startY && 
       clickCoords.y <= character.positionY.endY) {
-        alert('found!')
+        const newCharacter = {
+          ...character,
+          found: true
+        }
+
+        const characters = characterData.slice()
+        characters.splice(characters.indexOf(character), 1, newCharacter)
+        setCharacterData(characters)
     }
+
     setModalLocation()
   }
 
@@ -68,10 +80,10 @@ function App() {
         />
       }
       {
-        (modalLocation && levelData.characters) ?
+        (modalLocation && characterData) ?
           <Modal
             position={modalLocation}
-            names={levelData.characters.map(character => character.name)}
+            characters={characterData}
             handleSelection={handleSelection}
           />
           :
