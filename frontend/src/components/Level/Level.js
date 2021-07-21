@@ -14,6 +14,7 @@ const Level = (number) => {
   const [clickCoords, setClickCoords] = useState()
   const [modalLocation, setModalLocation] = useState()
   const [characterFound, setCharacterFound] = useState()
+  const [levelComplete, setLevelComplete] = useState(false)
 
   useEffect(() => {
     sanityClient.fetch(levelQuery, number)
@@ -45,14 +46,6 @@ const Level = (number) => {
       y: e.pageY
     })
   }
-
-  // useEffect(
-  //   () => {
-  //     const timer = setTimeout(() => setCharacterFound(), 1000)
-  //     return clearTimeout(timer)
-  //   },
-  //   [characterFound]
-  // )
 
   const handleSelection = name => {
     if (!name) { 
@@ -88,10 +81,24 @@ const Level = (number) => {
     }
   }
 
+  useEffect(() => {
+    checkLevelComplete()
+  }, [characterData]) 
+
+  const checkLevelComplete = () => {
+    if (!characterData) return
+    let complete = true
+    characterData.forEach(character => !character.found ? complete = false : null)
+    setLevelComplete(complete)
+  }
+
   return (
     <Container>
       {characterData &&
-        <Scoreboard characters={characterData} />
+        <Scoreboard 
+          characters={characterData} 
+          levelComplete={levelComplete}
+        />
       }
       {
         levelData.mainImage && 

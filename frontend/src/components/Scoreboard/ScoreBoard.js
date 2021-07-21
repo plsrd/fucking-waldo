@@ -4,10 +4,14 @@ import {
   Container,
   Character, 
   Preview,
-  Name
+  Name,
+  Banner,
+  BannerText,
+  Wrapper,
+  Button
 } from './style'
 
-const Scoreboard = ({ characters }) => {
+const Scoreboard = ({ characters, levelComplete }) => {
   const characterComponents = characters.map(character => (
     <Character key={character.name}>
       <Preview src={urlFor(character.previewImage)} />
@@ -16,7 +20,16 @@ const Scoreboard = ({ characters }) => {
   ))
   return (
     <Container>
-      { characterComponents }
+      <Wrapper>
+        { characterComponents }
+      </Wrapper>
+      {
+        levelComplete &&
+          <Banner>
+            <BannerText>Level Complete!</BannerText>
+            <Button>Select New Level</Button>
+          </Banner>
+      }
     </Container>
   )
 }
