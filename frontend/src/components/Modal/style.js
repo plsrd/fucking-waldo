@@ -6,6 +6,10 @@ export const Container = styled.div`
   top: ${({y}) => `${y}px`};
   display: flex;
   flex-direction: column;
+  width: 170px;
+  background-color: #10E5BA;
+  color: black;
+  justify-content: center;
 `
 
 export const CharacterSelect = styled.button`
@@ -13,3 +17,9 @@ export const CharacterSelect = styled.button`
 `
 
 export const CancelBtn = styled.button``
+
+export const Found = styled.p`
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 2rem 0
+`

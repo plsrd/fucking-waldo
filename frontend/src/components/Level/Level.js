@@ -13,6 +13,7 @@ const Level = (number) => {
   const [characterData, setCharacterData] = useState()
   const [clickCoords, setClickCoords] = useState()
   const [modalLocation, setModalLocation] = useState()
+  const [characterFound, setCharacterFound] = useState()
 
   useEffect(() => {
     sanityClient.fetch(levelQuery, number)
@@ -45,6 +46,14 @@ const Level = (number) => {
     })
   }
 
+  // useEffect(
+  //   () => {
+  //     const timer = setTimeout(() => setCharacterFound(), 1000)
+  //     return clearTimeout(timer)
+  //   },
+  //   [characterFound]
+  // )
+
   const handleSelection = name => {
     if (!name) { 
       setModalLocation()
@@ -60,17 +69,23 @@ const Level = (number) => {
       clickCoords.x <= character.positionX.endX &&
       clickCoords.y >= character.positionY.startY && 
       clickCoords.y <= character.positionY.endY) {
+
       const newCharacter = {
         ...character,
         found: true
       }
 
       const characters = characterData.slice()
-      characters.splice(characters.indexOf(character), 1, newCharacter)
-      setCharacterData(characters)
-    }
 
-    setModalLocation()
+      characters.splice(characters.indexOf(character), 1, newCharacter)
+
+      setCharacterFound(character)
+      setCharacterData(characters)
+      setTimeout(() => { 
+        setModalLocation() 
+        setCharacterFound()
+      }, 1000)
+    }
   }
 
   return (
@@ -91,6 +106,7 @@ const Level = (number) => {
             position={modalLocation}
             characters={characterData}
             handleSelection={handleSelection}
+            characterFound={characterFound}
           />
       }
     </Container>
