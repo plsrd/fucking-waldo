@@ -6,9 +6,11 @@ import { allLevelsQuery } from '../../sanity/queries'
 import './reset.css'
 
 import Level from '../Level/Level'
+import Nav from '../Nav/Nav'
 
 const App = () => {
   const [allLevels, setAllLevels] = useState()
+  const [currentLevel, setCurrentLevel] = useState()
 
   useEffect(() => {
     sanityClient.fetch(allLevelsQuery)
@@ -16,10 +18,11 @@ const App = () => {
       .catch(console.error)
   }, [])
 
-  console.log(allLevels)
-
   return (
-    <Level number={1} />
+    <>
+      <Nav setCurrentLevel={setCurrentLevel}/>
+      {currentLevel ? <Level number={currentLevel} /> : null }
+    </>
   )
 }
 

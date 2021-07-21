@@ -12,7 +12,7 @@ export const levelQuery = `
 
   export const allLevelsQuery = `
     *[_type == 'level']{
-      name,
+      number,
       mainImage
     }
   `
