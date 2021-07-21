@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
   height: 600px;
   width: 50%;
-  margin: 1rem auto;
+  margin: 2rem auto;
   display: flex;
   flex-direction: column;
   align-items: center
@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 
 export const Description = styled.p`
   font-size: 1.4rem;
-  margin: 3rem 4rem;
+  margin: 3rem 4rem 5rem 4rem;
   text-align: center;
 `
 
@@ -25,11 +25,11 @@ export const LevelContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  background-color: #8A5CFF;
+  background-color: #10E5BA;
+  color: black;
   cursor: pointer;
   &:hover {
-    background-color: #A785FF;
-    box-shadow: 7px 7px 0px #8A5CFFFF;
+    border: 2px solid black;
   }
 `
 
@@ -40,5 +40,5 @@ export const Image = styled.img`
 export const Title = styled.p`
   padding: 1rem;
   font-size: 1.4rem;
-  color: white;
+
 `
