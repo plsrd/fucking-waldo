@@ -22,4 +22,17 @@ export const Title = styled.h1`
 `
 export const Button = styled.button`
   margin-right: 3rem;
+  border-radius: 5px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-style: italic;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  &:hover {
+    color: black;
+  }
 `

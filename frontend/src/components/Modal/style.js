@@ -12,11 +12,34 @@ export const Container = styled.div`
   justify-content: center;
 `
 
-export const CharacterSelect = styled.button`
-  text-decoration: ${props => props.found ? 'line-through' : 'none'}
+const buttonStyles = `
+  border: none;
+  font-family: 'Source Code Pro', monospace;
+  font-size: .9rem;
+  cursor: pointer;
+  &:hover {
+    color: black
+  }
 `
 
-export const CancelBtn = styled.button``
+export const CharacterSelect = styled.button`
+  ${buttonStyles};
+  text-decoration: ${props => props.found ? 'line-through' : 'none'};
+  background-color: ${props => props.found ? 'lightgrey' : '#e4007c'};
+  color: ${props => props.found ? 'black' : 'white'};
+  &:hover {
+    background-color: ${props => props.found ? 'lightgrey' : 'white'};
+    color: black
+  }
+`
+
+export const CancelBtn = styled.button`
+  ${buttonStyles}
+  background-color: lightgrey;
+  &:hover {
+    background-color: white;
+  }
+`
 
 export const Found = styled.p`
   text-align: center;
