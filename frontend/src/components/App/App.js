@@ -1,12 +1,13 @@
 import React, { useEffect, useState} from 'react'
 import sanityClient from '../../sanity/client'
-import { urlFor } from '../../sanity/config'
 import { allLevelsQuery } from '../../sanity/queries'
 
 import './reset.css'
 
 import Level from '../Level/Level'
 import Nav from '../Nav/Nav'
+import LevelSelect from '../LevelSelect/LevelSelect'
+
 
 const App = () => {
   const [allLevels, setAllLevels] = useState()
@@ -18,10 +19,20 @@ const App = () => {
       .catch(console.error)
   }, [])
 
+  console.log(allLevels)
+
   return (
     <>
       <Nav setCurrentLevel={setCurrentLevel}/>
-      {currentLevel ? <Level number={currentLevel} /> : null }
+      {currentLevel ? 
+        <Level number={currentLevel} /> 
+        : 
+        allLevels && 
+          <LevelSelect 
+            levels={allLevels}
+            setCurrentLevel={setCurrentLevel}
+          /> 
+      }
     </>
   )
 }
