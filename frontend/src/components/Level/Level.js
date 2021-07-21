@@ -4,6 +4,7 @@ import { urlFor } from '../../sanity/config'
 import { levelQuery } from '../../sanity/queries'
 
 import Modal from '../Modal/Modal'
+import Scoreboard from '../Scoreboard/ScoreBoard'
 
 import { Container, Image } from './style'
 
@@ -59,14 +60,14 @@ const Level = (number) => {
       clickCoords.x <= character.positionX.endX &&
       clickCoords.y >= character.positionY.startY && 
       clickCoords.y <= character.positionY.endY) {
-        const newCharacter = {
-          ...character,
-          found: true
-        }
+      const newCharacter = {
+        ...character,
+        found: true
+      }
 
-        const characters = characterData.slice()
-        characters.splice(characters.indexOf(character), 1, newCharacter)
-        setCharacterData(characters)
+      const characters = characterData.slice()
+      characters.splice(characters.indexOf(character), 1, newCharacter)
+      setCharacterData(characters)
     }
 
     setModalLocation()
@@ -74,6 +75,9 @@ const Level = (number) => {
 
   return (
     <Container>
+      {characterData &&
+        <Scoreboard characters={characterData} />
+      }
       {
         levelData.mainImage && 
           <Image 

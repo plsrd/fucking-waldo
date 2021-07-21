@@ -8,7 +8,8 @@ export const NavBar = styled.nav`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
+  position: fixed;
+  top: 0;
 `
 
 export const Title = styled.h1`

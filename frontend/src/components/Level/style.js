@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 100vw;
+  max-width: 100vw;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 50px;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 8rem;
 `
 
 export const Image = styled.img`
+  margin-top:  18rem;
 `
