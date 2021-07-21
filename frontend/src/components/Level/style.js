@@ -9,5 +9,5 @@ export const Container = styled.div`
 `
 
 export const Image = styled.img`
-  margin-top:  18rem;
+  margin-top:  17rem;
 `

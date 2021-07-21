@@ -9,6 +9,7 @@ export const Container = styled.div`
   position: fixed;
   top: 6rem;
   background: white;
+  overflow-x: scroll;
 `
 
 export const Character = styled.div`

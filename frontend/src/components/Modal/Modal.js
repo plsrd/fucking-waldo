@@ -5,7 +5,7 @@ export const Modal = ({ characters, position, handleSelection, characterFound })
   return (
     <Container x={position.x} y={position.y}>
       {characterFound ? 
-        <Found>You found {characterFound.name}!</Found>
+        <Found>{characterFound.name? `You found ${characterFound.name}!` : 'Wrong!'}</Found>
         :
         (
           <>

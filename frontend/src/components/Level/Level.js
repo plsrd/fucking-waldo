@@ -79,6 +79,12 @@ const Level = ({ number, setCurrentLevel }) => {
         setModalLocation() 
         setCharacterFound()
       }, 1000)
+    } else {
+      setCharacterFound({})
+      setTimeout(() => { 
+        setModalLocation() 
+        setCharacterFound()
+      }, 1000)
     }
   }
 
