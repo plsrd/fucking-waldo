@@ -11,7 +11,7 @@ import {
   Button
 } from './style'
 
-const Scoreboard = ({ characters, levelComplete }) => {
+const Scoreboard = ({ characters, levelComplete, setCurrentLevel }) => {
   const characterComponents = characters.map(character => (
     <Character key={character.name}>
       <Preview src={urlFor(character.previewImage)} />
@@ -27,7 +27,7 @@ const Scoreboard = ({ characters, levelComplete }) => {
         levelComplete &&
           <Banner>
             <BannerText>Level Complete!</BannerText>
-            <Button>Select New Level</Button>
+            <Button onClick={() => setCurrentLevel()}>Select New Level</Button>
           </Banner>
       }
     </Container>

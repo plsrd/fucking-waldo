@@ -8,7 +8,7 @@ import Scoreboard from '../Scoreboard/ScoreBoard'
 
 import { Container, Image } from './style'
 
-const Level = (number) => {
+const Level = ({ number, setCurrentLevel }) => {
   const [levelData, setLevelData] = useState({})
   const [characterData, setCharacterData] = useState()
   const [clickCoords, setClickCoords] = useState()
@@ -98,6 +98,7 @@ const Level = (number) => {
         <Scoreboard 
           characters={characterData} 
           levelComplete={levelComplete}
+          setCurrentLevel={setCurrentLevel}
         />
       }
       {

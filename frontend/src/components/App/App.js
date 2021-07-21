@@ -25,7 +25,10 @@ const App = () => {
     <>
       <Nav setCurrentLevel={setCurrentLevel}/>
       {currentLevel ? 
-        <Level number={currentLevel} /> 
+        <Level 
+          number={currentLevel}
+          setCurrentLevel={setCurrentLevel}
+        /> 
         : 
         allLevels && 
           <LevelSelect 
