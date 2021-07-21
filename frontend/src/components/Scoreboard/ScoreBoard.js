@@ -27,13 +27,14 @@ const Preview = styled.img`
 const Name = styled.p`
   font-size: 1.2rem;
   padding: .5rem;
+  text-decoration: ${props => props.found ? 'line-through' : null}
 `
 
 const Scoreboard = ({ characters }) => {
   const characterComponents = characters.map(character => (
     <Character key={character.name}>
       <Preview src={urlFor(character.previewImage)} />
-      <Name>{character.name}</Name>
+      <Name found={character.found}>{character.name}</Name>
     </Character>
   ))
   return (
