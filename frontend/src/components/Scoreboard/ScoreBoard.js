@@ -27,7 +27,11 @@ const Scoreboard = ({ characters, levelComplete, setCurrentLevel }) => {
         levelComplete &&
           <Banner>
             <BannerText>Level Complete!</BannerText>
-            <Button onClick={() => setCurrentLevel()}>Select New Level</Button>
+            <Button 
+              onClick={() => setCurrentLevel()}
+            >
+              Select New Level
+            </Button>
           </Banner>
       }
     </Container>

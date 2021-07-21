@@ -17,7 +17,8 @@ const Level = ({ number, setCurrentLevel }) => {
   const [levelComplete, setLevelComplete] = useState(false)
 
   useEffect(() => {
-    sanityClient.fetch(levelQuery, number)
+    const params = { number: number }
+    sanityClient.fetch(levelQuery, params)
       .then(data => {
         setLevelData({
           number: data.number,

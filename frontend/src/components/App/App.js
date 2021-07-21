@@ -19,8 +19,6 @@ const App = () => {
       .catch(console.error)
   }, [])
 
-  console.log(allLevels)
-
   return (
     <>
       <Nav setCurrentLevel={setCurrentLevel}/>
