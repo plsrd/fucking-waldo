@@ -33,6 +33,6 @@ export const Button = styled.button`
   padding: .5rem 1rem;
   cursor: pointer;
   &:hover {
-    color: black;
+    color: #10E5BA;
   }
 `

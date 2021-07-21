@@ -15,30 +15,24 @@ export const Container = styled.div`
 const buttonStyles = `
   border: none;
   font-family: 'Source Code Pro', monospace;
-  font-size: .9rem;
   cursor: pointer;
+  font-size: 1rem;
+  padding: .2rem 1rem;
+  background-color: white;
   &:hover {
-    color: black
+    border: 2px solid black;
+    box-sizing: content-box;
   }
 `
 
 export const CharacterSelect = styled.button`
   ${buttonStyles};
   text-decoration: ${props => props.found ? 'line-through' : 'none'};
-  background-color: ${props => props.found ? 'lightgrey' : '#e4007c'};
-  color: ${props => props.found ? 'black' : 'white'};
-  &:hover {
-    background-color: ${props => props.found ? 'lightgrey' : 'white'};
-    color: black
-  }
 `
 
 export const CancelBtn = styled.button`
   ${buttonStyles}
   background-color: lightgrey;
-  &:hover {
-    background-color: white;
-  }
 `
 
 export const Found = styled.p`

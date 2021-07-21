@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 0 0 0;
+  padding: 2rem 0 .8rem 0;
   position: fixed;
   top: 6rem;
   background: white;
@@ -81,6 +81,16 @@ export const BannerText = styled.p`
 
 export const Button = styled.button`
   margin-bottom: 2rem;
+  border: none;
+  font-family: 'Source Code Pro', monospace;
+  cursor: pointer;
+  font-size: 1rem;
+  height: 2rem;
+  padding: 0 1rem;
+  background-color: white;
+  &:hover {
+    border: 2px solid black;
+  }
 `
 
 export const Wrapper = styled.div`
