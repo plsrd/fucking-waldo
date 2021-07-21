@@ -21,15 +21,19 @@ export const LinkContainer = styled.div`
 `
 
 export const LevelContainer = styled.div`
+  height: 400px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  justify-content: center;
   background-color: #10E5BA;
   color: black;
+  margin: 0 1rem;
   cursor: pointer;
   &:hover {
     border: 2px solid black;
+    box-sizing: border-box;
   }
 `
 
