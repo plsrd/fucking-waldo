@@ -1,16 +1,16 @@
 import React from 'react'
-import { Wrapper, Title, Button } from './style'
+import { NavBar, Title, Button } from './style'
 
 const Nav = ({ setCurrentLevel }) => {
   return (
-    <Wrapper>
+    <NavBar>
       <Title>Freak Seek</Title>
       <Button 
         onClick={() => setCurrentLevel()}
       >
         All Levels
       </Button>
-    </Wrapper>
+    </NavBar>
   )
 }
 
