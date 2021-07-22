@@ -1,6 +1,7 @@
 export default {
   name: 'levelScore',
   title: 'Level Score',
+  __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
   type: 'object',
   fields: [
     {
