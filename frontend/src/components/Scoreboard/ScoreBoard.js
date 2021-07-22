@@ -1,5 +1,8 @@
 import React from 'react'
 import { urlFor } from '../../sanity/config'
+
+import Timer from '../Timer/Timer'
+
 import {
   Container,
   Character, 
@@ -11,7 +14,7 @@ import {
   Button
 } from './style'
 
-const Scoreboard = ({ characters, levelComplete, setCurrentLevel }) => {
+const Scoreboard = ({ characters, levelComplete, setCurrentLevel, levelNumber }) => {
   const characterComponents = characters.map(character => (
     <Character key={character.name}>
       <Preview src={urlFor(character.previewImage)} />
@@ -22,6 +25,7 @@ const Scoreboard = ({ characters, levelComplete, setCurrentLevel }) => {
     <Container>
       <Wrapper>
         { characterComponents }
+        <Timer levelComplete={levelComplete} />
       </Wrapper>
       {
         levelComplete &&

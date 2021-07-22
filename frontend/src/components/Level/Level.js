@@ -105,6 +105,7 @@ const Level = ({ number, setCurrentLevel }) => {
         <Scoreboard 
           characters={characterData} 
           levelComplete={levelComplete}
+          levelNumber={number}
           setCurrentLevel={setCurrentLevel}
         />
       }

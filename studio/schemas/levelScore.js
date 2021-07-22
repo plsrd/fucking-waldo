@@ -17,7 +17,7 @@ export default {
     {
       name: 'time',
       title: 'Time',
-      type: 'string'
+      type: 'number'
     },
   ],
   preview: {

@@ -16,3 +16,13 @@ export const levelQuery = `
       mainImage
     }
   `
+
+  export const highScoreQuery = `
+    *[_type == 'highScore']{
+      levels[]{
+        levelNumber,
+        player, 
+        time
+      }
+    }[0]
+  `
