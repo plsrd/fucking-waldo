@@ -3,9 +3,12 @@ import { useStopwatch } from 'react-timer-hook'
 import sanityClient from '../../sanity/client'
 import { highScoreQuery } from '../../sanity/queries'
 
+import { Container, Title, Form, Label, Input, Button } from './style'
+
 const Timer = ({ levelComplete, levelNumber }) => {
   const [existingHighscore, setExistingHighscore] = useState()
   const [isHighscore, setIsHighscore] = useState(false)
+  const [initials, setInitials] = useState('')
 
   const {
     seconds,
@@ -28,20 +31,36 @@ const Timer = ({ levelComplete, levelNumber }) => {
     }
   }, [levelComplete])
 
+  const handleChange = (e) => {
+    setInitials(e.target.value)
+  }
+
   return (
-    <>
+    <Container>
       {
         isHighscore ?
-          <div>highscore!</div>
+          <>
+            <Title>New High Score!!</Title>
+            <Form>
+              <Label>Enter your initials:
+              <Input 
+                type='text'
+                name='initials'
+                value={initials}
+                onChange={handleChange}
+              />
+              </Label>
+              <Button>Submit</Button>
+            </Form>
+          </>
         :
           <div style={{textAlign: 'center'}}>
-          <div style={{fontSize: '50px'}}>
-            <span>{minutes}</span>:<span>{seconds < 10 ? `0${seconds}` : seconds}</span>
-          </div>
+            <div style={{fontSize: '50px'}}>
+              <span>{minutes}</span>:<span>{seconds < 10 ? `0${seconds}` : seconds}</span>
+            </div>
           </div>
       }
-    </>
-
+    </Container>
   );
 }
 
