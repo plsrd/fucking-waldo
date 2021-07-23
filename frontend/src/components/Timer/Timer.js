@@ -35,6 +35,10 @@ const Timer = ({ levelComplete, levelNumber }) => {
     setInitials(e.target.value)
   }
 
+  const handleClick = () => {
+
+  }
+
   return (
     <Container>
       {
@@ -48,9 +52,10 @@ const Timer = ({ levelComplete, levelNumber }) => {
                 name='initials'
                 value={initials}
                 onChange={handleChange}
+                maxLength='4'
               />
               </Label>
-              <Button>Submit</Button>
+              <Button onClick={handleClick}>Submit</Button>
             </Form>
           </>
         :
