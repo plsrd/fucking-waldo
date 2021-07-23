@@ -20,6 +20,11 @@ export default {
       of: [
         {type: 'character'}
       ]
+    },
+    {
+      name: 'highScores',
+      title: 'High Scores',
+      type: 'levelScore'
     }
   ],
   preview: {

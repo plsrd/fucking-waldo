@@ -5,7 +5,6 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import level from './level'
 import character from './character'
 import levelScore from './levelScore'
-import highScore from './highScore'
 
 export default createSchema({
   name: 'default',
@@ -13,6 +12,5 @@ export default createSchema({
     level,
     character,
     levelScore,
-    highScore
   ]),
 })

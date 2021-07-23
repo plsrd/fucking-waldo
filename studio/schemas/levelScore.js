@@ -5,11 +5,6 @@ export default {
   type: 'object',
   fields: [
     {
-      name: 'levelNumber',
-      title: 'Level Number',
-      type: 'number'
-    },
-    {
       name: 'playerName',
       title: 'Player Name',
       type: 'string'

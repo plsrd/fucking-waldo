@@ -7,7 +7,8 @@ export const levelQuery = `
       previewImage,
       positionX,
       positionY
-    }
+    },
+    highScores
   }[0]`
 
   export const allLevelsQuery = `
@@ -18,11 +19,8 @@ export const levelQuery = `
   `
 
   export const highScoreQuery = `
-    *[_type == 'highScore']{
-      levels[]{
-        levelNumber,
-        player, 
-        time
-      }
+    *[_type == 'level' number == $number]{
+      playerName,
+      time
     }[0]
   `
