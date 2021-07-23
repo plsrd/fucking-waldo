@@ -11,18 +11,19 @@ export const levelQuery = `
     highScores
   }[0]`
 
-  export const allLevelsQuery = `
-    *[_type == 'level']{
-      number,
-      mainImage
-    }
-  `
+export const allLevelsQuery = `
+  *[_type == 'level']{
+    number,
+    mainImage
+  }
+`
 
-  export const highScoreQuery = `
-    *[_type == 'level' && number == $number]{
-      highScores{
-        playerName,
-        time
-      }
-    }[0]
-  `
+export const highScoreQuery = `
+  *[_type == 'level' && number == $number]{
+    _id,
+    highScores{
+      playerName,
+      time
+    }
+  }[0]
+`

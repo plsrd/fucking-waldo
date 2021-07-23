@@ -19,15 +19,14 @@ const Timer = ({ levelComplete, levelNumber }) => {
   useEffect(() => {
     const params = { number: levelNumber }
     sanityClient.fetch(highScoreQuery, params)
-        .then(data => setExistingHighscore(data.highScores))
+        .then(data => setExistingHighscore(data))
   }, [])
 
   useEffect(() => {
     if (levelComplete === true) {
       pause()
-      console.log(`${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`)
       const timeInSeconds = minutes * 60 + seconds
-      timeInSeconds < existingHighscore.time && setIsHighscore(true)
+      timeInSeconds < existingHighscore.highScores.time && setIsHighscore(true)
     }
   }, [levelComplete])
 
@@ -35,9 +34,22 @@ const Timer = ({ levelComplete, levelNumber }) => {
     setInitials(e.target.value)
   }
 
-  const handleClick = () => {
-
+  const handleClick = (e) => {
+    e.preventDefault()
+    const score = minutes * 60 + seconds
+    sanityClient
+      .patch(existingHighscore._id)
+      .set({highScores: {playerName: initials, time: score}})
+      .commit()
+      .then((updatedDoc) => {
+        console.log('Hurray, the score is updated!')
+        console.log(updatedDoc)
+      })
+      .catch((err) => {
+        console.error('Oh no, the update failed: ', err.message)
+      })
   }
+
 
   return (
     <Container>

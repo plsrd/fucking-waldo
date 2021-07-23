@@ -9,14 +9,19 @@ export const Container = styled.div`
 
 export const Title = styled.p``
 
-export const Form = styled.form`
+export const Form = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 `
 
-export const Label = styled.label``
+export const Label = styled.label`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
 
 export const Input = styled.input``
 
