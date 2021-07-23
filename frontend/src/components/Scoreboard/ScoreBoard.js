@@ -25,7 +25,10 @@ const Scoreboard = ({ characters, levelComplete, setCurrentLevel, levelNumber })
     <Container>
       <Wrapper>
         { characterComponents }
-        <Timer levelComplete={levelComplete} />
+        <Timer 
+          levelComplete={levelComplete} 
+          levelNumber={levelNumber}
+        />
       </Wrapper>
       {
         levelComplete &&

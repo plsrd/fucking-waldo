@@ -19,8 +19,10 @@ export const levelQuery = `
   `
 
   export const highScoreQuery = `
-    *[_type == 'level' number == $number]{
-      playerName,
-      time
+    *[_type == 'level' && number == $number]{
+      highScores{
+        playerName,
+        time
+      }
     }[0]
   `

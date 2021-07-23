@@ -5,38 +5,43 @@ import { highScoreQuery } from '../../sanity/queries'
 
 const Timer = ({ levelComplete, levelNumber }) => {
   const [existingHighscore, setExistingHighscore] = useState()
+  const [isHighscore, setIsHighscore] = useState(false)
+
   const {
     seconds,
     minutes,
     pause
   } = useStopwatch({ autoStart: true })
-
-  const isHighscore = () => {
-    const timeInSeconds = minutes * 60 + seconds
-
-  }
  
   useEffect(() => {
-    const params = { levelNumber: levelNumber - 1}
+    const params = { number: levelNumber }
     sanityClient.fetch(highScoreQuery, params)
-        .then(data => setExistingHighscore(data))
+        .then(data => setExistingHighscore(data.highScores))
   }, [])
 
   useEffect(() => {
     if (levelComplete === true) {
       pause()
       console.log(`${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`)
+      const timeInSeconds = minutes * 60 + seconds
+      timeInSeconds < existingHighscore.time && setIsHighscore(true)
     }
   }, [levelComplete])
 
-  console.log(existingHighscore)
-
   return (
-    <div style={{textAlign: 'center'}}>
-      <div style={{fontSize: '50px'}}>
-        <span>{minutes}</span>:<span>{seconds < 10 ? `0${seconds}` : seconds}</span>
-      </div>
-    </div>
+    <>
+      {
+        isHighscore ?
+          <div>highscore!</div>
+        :
+          <div style={{textAlign: 'center'}}>
+          <div style={{fontSize: '50px'}}>
+            <span>{minutes}</span>:<span>{seconds < 10 ? `0${seconds}` : seconds}</span>
+          </div>
+          </div>
+      }
+    </>
+
   );
 }
 
