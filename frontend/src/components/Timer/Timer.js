@@ -42,10 +42,6 @@ const Timer = ({ levelComplete, levelNumber }) => {
       .patch(existingHighscore._id)
       .set({highScores: {playerName: initials, time: score}})
       .commit()
-      .then((updatedDoc) => {
-        console.log('Hurray, the score is updated!')
-        console.log(updatedDoc)
-      })
       .catch((err) => {
         console.error('Oh no, the update failed: ', err.message)
       })
