@@ -3,7 +3,7 @@ import { useStopwatch } from 'react-timer-hook'
 import sanityClient from '../../sanity/client'
 import { highScoreQuery } from '../../sanity/queries'
 
-import { Container, Title, Form, Label, Input, Button } from './style'
+import { Container, Title, Form, Label, Input, Button, TimerContainer, Time } from './style'
 
 const Timer = ({ levelComplete, levelNumber }) => {
   const [existingHighscore, setExistingHighscore] = useState()
@@ -71,11 +71,12 @@ const Timer = ({ levelComplete, levelNumber }) => {
             </Form>
           </>
         :
-          <div style={{textAlign: 'center'}}>
-            <div style={{fontSize: '50px'}}>
-              <span>{minutes}</span>:<span>{seconds < 10 ? `0${seconds}` : seconds}</span>
-            </div>
-          </div>
+          <TimerContainer>
+            <Title>Time ellapsed:</Title>
+            <Time>
+              {`${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`}
+            </Time>
+          </TimerContainer>
       }
     </Container>
   );

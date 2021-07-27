@@ -42,6 +42,8 @@ const Level = ({ number, setCurrentLevel }) => {
 
     setClickCoords(coords)
 
+    console.log(coords)
+
     setModalLocation({
       x: e.pageX,
       y: e.pageY
