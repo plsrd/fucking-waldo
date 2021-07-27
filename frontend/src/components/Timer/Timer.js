@@ -9,6 +9,7 @@ const Timer = ({ levelComplete, levelNumber }) => {
   const [existingHighscore, setExistingHighscore] = useState()
   const [isHighscore, setIsHighscore] = useState(false)
   const [initials, setInitials] = useState('')
+  const [submitting, setSubmitting] = useState(false)
 
   const {
     seconds,
@@ -48,6 +49,7 @@ const Timer = ({ levelComplete, levelNumber }) => {
       .catch((err) => {
         console.error('Oh no, the update failed: ', err.message)
       })
+    setSubmitting(true)
   }
 
 
@@ -55,8 +57,11 @@ const Timer = ({ levelComplete, levelNumber }) => {
     <Container>
       {
         isHighscore ?
+          submitting ?
+          <Title>Submitted!</Title>
+          :
           <>
-            <Title>New High Score!!</Title>
+            <Title highScore={true}>New High Score!!</Title>
             <Form>
               <Label>Enter your initials:
               <Input 
